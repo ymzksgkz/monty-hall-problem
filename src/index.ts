@@ -122,7 +122,7 @@ const parseArgs: ParseArgs = () => {
 }
 
 const main: Main = () => {
-  const { LENGTH, TIMES, IS_CHANGE_OPTION } = parseArgs()
+  const { LENGTH   , TIMES, IS_CHANGE_OPTION } = parseArgs()
 
   // 規定回数繰り返して結果を集計する
   const results = Array.from({ length: TIMES }, () => doMontyHall(LENGTH, IS_CHANGE_OPTION))
