@@ -27,11 +27,11 @@ $ yarn
 ## 使い方
 ```bash
 $ デフォルトでは 3 つの選択肢から 2 回目に選択肢を変更し結果を配列に格納する処理を 100 回行います
-$ npx ts-node ./monty-hall.ts
+$ npx ts-node ./src/index.ts
 
 $ 5 つの選択肢から 2 回目に選択肢を変更せず結果を配列に格納する処理を 1000 回行う場合
-$ npx ts-node ./monty-hall.ts --length=5 --change=true --times=1000
+$ npx ts-node ./src/index.ts --length=5 --change=true --times=1000
 
 $ ヘルプ
-$ npx ts-node ./monty-hall.ts --help
+$ npx ts-node ./src/index.ts --help
 ```
