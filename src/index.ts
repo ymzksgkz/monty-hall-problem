@@ -53,7 +53,7 @@ const removeBadOptions: RemoveBadOptions = (options) => {
   }
 
   // 自分が１回目ではずれを選択している場合
-  return options.filter((option, i) => {
+  return options.filter(option => {
     // 正解は必ず残す
     if (option.isCorrect) return true
 
