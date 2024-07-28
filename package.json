@@ -4,7 +4,7 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write 'prettier --write 'src/**/*.{ts, json}'"
+    "format": "prettier --write './**/*.{ts,json}'"
   },
   "dependencies": {
     "ts-node": "^10.9.2",
