@@ -13,10 +13,10 @@ type ParseArgs = () => { TIMES: number; LENGTH: number; IS_CHANGE_OPTION: boolea
 type Main = () => void
 
 // 決められた配列の範囲からランダムに１つを選択する
-const chooseRandom1: ChooseRandom1 = (optionLength) => Math.floor(Math.random() * optionLength)
+const chooseRandom1: ChooseRandom1 = optionLength => Math.floor(Math.random() * optionLength)
 
 // 正解が１つだけ設定された配列を返す
-const generateOptions: GenerateOptions = (optionLength) => {
+const generateOptions: GenerateOptions = optionLength => {
   // 正解の要素番号をランダムに決定する
   const correctIndex = chooseRandom1(optionLength)
   // 正解なら true, ハズレなら false を設定する
@@ -27,9 +27,9 @@ const generateOptions: GenerateOptions = (optionLength) => {
 }
 
 // 選択したもの以外のハズレを全て選択肢から外す
-const removeBadOptions: RemoveBadOptions = (options) => {
+const removeBadOptions: RemoveBadOptions = options => {
   // 自分が１回目で正解を選択している場合
-  if (options.some((option) => option.isCorrect && option.isPlayerChoose)) {
+  if (options.some(option => option.isCorrect && option.isPlayerChoose)) {
     let remainingOptionIndex = -1 // まだ不定
     const correctOptionIndex = options.findIndex(({ isCorrect }) => isCorrect)
 
@@ -53,7 +53,7 @@ const removeBadOptions: RemoveBadOptions = (options) => {
   }
 
   // 自分が１回目ではずれを選択している場合
-  return options.filter((option) => {
+  return options.filter(option => {
     // 正解は必ず残す
     if (option.isCorrect) return true
 
@@ -77,18 +77,18 @@ const doMontyHall: DoMontyHall = (optionLength, isChangeOption) => {
   // 最初に選んでいない方に選択肢を変える場合こちらで処理
   if (isChangeOption) {
     // この時点で残っている選択肢の数は 2 つなので単純に選択している要素を反転させる
-    filteredOptions.forEach((option) => {
+    filteredOptions.forEach(option => {
       option.isPlayerChoose = !option.isPlayerChoose
     })
   }
 
   // 最終的結果
-  const resultOption = filteredOptions.find((option) => option.isPlayerChoose)
+  const resultOption = filteredOptions.find(option => option.isPlayerChoose)
 
   // 処理が正確だったかを確認
   if (options.length !== optionLength) throw new Error('選択肢が optionLength の数と異なる')
   if (filteredOptions.length !== 2) throw new Error('除外後の選択肢が2つになっていない')
-  if (filteredOptions.filter((option) => option.isCorrect).length !== 1) throw new Error('正解が１つになっていない')
+  if (filteredOptions.filter(option => option.isCorrect).length !== 1) throw new Error('正解が１つになっていない')
   if (typeof resultOption.isCorrect !== 'boolean') throw new Error('結果が boolean ではない')
 
   // 正解なら true, 不正解なら false を返す
@@ -127,7 +127,7 @@ const main: Main = () => {
   // 規定回数繰り返して結果を集計する
   const results = Array.from({ length: TIMES }, () => doMontyHall(LENGTH, IS_CHANGE_OPTION))
   // 結果が true であった割合
-  const winRate = results.filter((result) => result === true).length / TIMES
+  const winRate = results.filter(result => result === true).length / TIMES
 
   console.log('=====================================================================\n')
   console.log(
